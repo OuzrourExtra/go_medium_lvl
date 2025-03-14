@@ -1,9 +1,11 @@
 package main
 
 import (
-	"github.com/ouzrourextra/go_medium_lvl/34_create_struct_of_a_person/input"
-	"github.com/ouzrourextra/go_medium_lvl/34_create_struct_of_a_person/err"
 	"fmt"
+	"strings"
+
+	"github.com/ouzrourextra/go_medium_lvl/34_create_struct_of_a_person/err"
+	"github.com/ouzrourextra/go_medium_lvl/34_create_struct_of_a_person/input"
 )
 
 
@@ -15,6 +17,15 @@ type Person struct{
 	email string
 }
 
+func verifyMailSyntax(str *string){
+	if !strings.ContainsRune(*str,'@') || !strings.ContainsRune(*str,'.'){
+		email , errEmail := input.InputString("(Wrong Syntaxe) Retype the e-mail of the person (string) ")
+		err.Stop(errEmail)
+		*str = email
+		verifyMailSyntax(str)
+	}
+}
+
 func fill (persons *[]Person, capacity int){
 	for i:= 0 ; i<capacity ; i++{
 		name , errName := input.InputString("Enter the name of the person (string) ")
@@ -23,6 +34,7 @@ func fill (persons *[]Person, capacity int){
 		err.Stop(errAge)
 		email , errEmail := input.InputString("Enter the e-mail of the person (string) ")
 		err.Stop(errEmail)
+		verifyMailSyntax(&email)
 		
 		*persons = append(*persons, Person{name: name, age: int(age), email: email})
 
