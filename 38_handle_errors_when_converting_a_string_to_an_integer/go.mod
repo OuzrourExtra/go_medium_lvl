@@ -1,0 +1,3 @@
+module github.com/ouzrourextra/go_medium_lvl/38_handle_errors_when_converting_a_string_to_an_integer
+
+go 1.23.5
