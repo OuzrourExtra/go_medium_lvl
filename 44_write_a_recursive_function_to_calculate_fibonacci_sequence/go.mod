@@ -1,0 +1,3 @@
+module github.com/ouzrourextra/go_medium_lvl/44_write_a_recursive_function_to_calculate_fibonacci_sequence
+
+go 1.23.5
