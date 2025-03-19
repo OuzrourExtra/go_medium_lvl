@@ -1,0 +1,3 @@
+module github.com/ouzrourextra/go_medium_lvl/47_use_type_assertion_to_determine_the_dynamic_type_of_an_interface
+
+go 1.23.5
